@@ -26,17 +26,29 @@ func init() {
 }
 
 func GetOne(id int) *Client {
-	panic("Not implemented")
+	var c Client
+
+	r := db.First(&c, id).RowsAffected
+	if r > 0 {
+		return &c
+	}
+	return nil
 }
 
 func GetAll() []Client {
-	panic("Not implemented")
+	var c []Client
+
+	r := db.Find(&c).RowsAffected
+	if r > 0 {
+		return c
+	}
+	return nil
 }
 
 func Insert(cli Client) {
-	panic("Not implemented")
+	db.Create(&cli)
 }
 
 func Update(cli Client) {
-	panic("Not implemented")
+	db.Save(&cli).Where("id = ?", cli.Id)
 }

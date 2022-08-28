@@ -1,22 +1,40 @@
 package productmodel
 
-import m "github.com/VitorC-sa/crud-meplux/models/modelInterface"
+import (
+	"time"
+
+	"github.com/VitorC-sa/crud-meplux/database"
+	"gorm.io/gorm"
+)
 
 type Product struct {
+	Id              uint      `json:"id" gorm:"primarykey,autoincrement"`
+	Descricao       string    `json:"descricao"`
+	Preco           float64   `json:"preco"`
+	Quantidade      uint      `json:"quantidade"`
+	DataCriacao     time.Time `json:"data_criacao" gorm:"autoCreateTime:milli"`
+	DataAtualizacao time.Time `json:"data_atualizacao" gorm:"autoUpdateTime:milli"`
 }
 
-func (c Product) GetOne(id int) m.MInterface {
-	panic("not implemented") // TODO: Implement
+var db *gorm.DB
+
+func init() {
+	db = database.GetConnection()
+	db.AutoMigrate(&Product{})
 }
 
-func (c Product) GetAll() []m.MInterface {
-	panic("not implemented") // TODO: Implement
+func GetOne(id int) *Product {
+	panic("Not implemented")
 }
 
-func (c Product) Insert(m m.MInterface) {
-	panic("not implemented") // TODO: Implement
+func GetAll() []Product {
+	panic("Not implemented")
 }
 
-func (c Product) Update(m m.MInterface) {
-	panic("not implemented") // TODO: Implement
+func Insert(cli Product) {
+	panic("Not implemented")
+}
+
+func Update(cli Product) {
+	panic("Not implemented")
 }

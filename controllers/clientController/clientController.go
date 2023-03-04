@@ -12,7 +12,7 @@ func GET(ctx *gin.Context) {
 	id, err := strconv.Atoi(ctx.Param("id"))
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
-			"código":   "Requisição Inválida",
+			"codigo":   "Requisicao Invalida",
 			"mensagem": "ID fora do formato esperado",
 		})
 		return
@@ -21,8 +21,8 @@ func GET(ctx *gin.Context) {
 	c := c.GetOne(id)
 	if c == nil {
 		ctx.JSON(http.StatusUnprocessableEntity, gin.H{
-			"código":   "Entidade inválida",
-			"mensagem": "Cliente não encontrado",
+			"codigo":   "Entidade invalida",
+			"mensagem": "Cliente nao encontrado",
 		})
 		return
 	}
